@@ -2,7 +2,8 @@ import { NextAuthOptions } from "next-auth"
 import Credentials from "next-auth/providers/credentials"
 
 export const nextAuthConfig: NextAuthOptions = {
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET || "fallback_secret_key_for_vercel_deployments",
+  trustHost: true,
 
   session: {
     strategy: "jwt",
