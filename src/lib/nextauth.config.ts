@@ -37,7 +37,7 @@ export const nextAuthConfig: NextAuthOptions = {
 
         if (res.ok && finalRes.token && finalRes.user) {
           return {
-            id: finalRes.user._id,
+            id: finalRes.user._id?.toString() || finalRes.user.email,
             name: finalRes.user.name,       
             email: finalRes.user.email,
             realTokenFromBackEnd: finalRes.token,  
