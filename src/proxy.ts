@@ -8,12 +8,12 @@ export default async function middleware(req: NextRequest) {
   console.log("jwt form middleware", jwt);
 
   if (jwt == null) {
-    return NextResponse.redirect("http://localhost:3000/login")
+    return NextResponse.redirect("/login")
   }
 
   return NextResponse.next()
 }
 
 export const config = {
-  matcher: ["/cart", "/support" , "/allproducts"]
+  matcher: ["/cart", "/support", "/allproducts"]
 }

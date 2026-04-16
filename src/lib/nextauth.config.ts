@@ -21,7 +21,7 @@ export const nextAuthConfig: NextAuthOptions = {
         password: {},
       },
       async authorize(credentials) {
-        const res = await fetch("https://ecommerce.routemisr.com/api/v1/auth/signin", {
+        const res = await fetch("/signin", {
           method: "POST",
           body: JSON.stringify({
             email: credentials?.email,
@@ -38,9 +38,9 @@ export const nextAuthConfig: NextAuthOptions = {
         if (res.ok && finalRes.token && finalRes.user) {
           return {
             id: finalRes.user._id?.toString() || finalRes.user.email,
-            name: finalRes.user.name,       
+            name: finalRes.user.name,
             email: finalRes.user.email,
-            realTokenFromBackEnd: finalRes.token,  
+            realTokenFromBackEnd: finalRes.token,
           }
         }
 
@@ -51,10 +51,10 @@ export const nextAuthConfig: NextAuthOptions = {
 
   callbacks: {
     jwt(params) {
-      if(params.user){
+      if (params.user) {
         params.token.realTokenFromBackEnd = (params.user as any).realTokenFromBackEnd
       }
-      return params.token   
+      return params.token
     },
 
     session({ session, token }) {

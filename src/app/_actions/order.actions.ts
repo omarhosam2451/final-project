@@ -43,7 +43,7 @@ export async function createOnlineOrder(cartId: string, shippingAddress: Shippin
   }
 
   try {
-    const baseUrl = "http://localhost:3000"; 
+    const baseUrl = "https://finalproject-delta-nine.vercel.app";
     const res = await fetch(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=${baseUrl}`, {
       method: "POST",
       body: JSON.stringify({ shippingAddress }),
